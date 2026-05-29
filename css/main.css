@@ -1,0 +1,622 @@
+/* ============================================
+   The Youth / Counterculture Movement
+   Student History Project — 1960s
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Special+Elite&display=swap');
+
+:root {
+  --bg:       #18110a;
+  --surface:  #211608;
+  --gold:     #e8c840;
+  --orange:   #d4612a;
+  --cream:    #ede8d8;
+  --muted:    #9e9480;
+  --indigo:   #3a2e88;
+  --teal:     #1e9e96;
+  --magenta:  #a83474;
+  --border:   #e8c840;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  border-top: 5px solid var(--gold);
+}
+
+/* paper texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(232,200,64,0.03) 29px),
+    repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(232,200,64,0.02) 29px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   TYPOGRAPHY — varied, not formula
+   ============================================ */
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 8vw, 6rem); font-weight: 900; line-height: 1.05; }
+h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.1; }
+h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; line-height: 1.25; }
+h4 { font-family: 'Special Elite', cursive; font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+p  { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
+em { font-style: italic; }
+
+/* Stamp label — used sparingly, NOT on every section */
+.stamp {
+  display: inline-block;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--gold);
+  padding: 0.2rem 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Marker highlight — like a student's highlighter */
+.mark {
+  background: rgba(232,200,64,0.22);
+  padding: 0 0.2em;
+}
+
+/* Large pull quote */
+.pull-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.3;
+  border-left: 6px solid var(--orange);
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  margin: 2rem 0;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.8rem;
+  background: #100c04;
+  border-bottom: 3px solid var(--gold);
+}
+
+#navbar .nav-brand {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#navbar nav { display: flex; gap: 0.1rem; flex-wrap: wrap; }
+
+#navbar nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+#navbar nav a:hover,
+#navbar nav a.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ============================================
+   HERO — protest poster, not landing page
+   ============================================ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 7rem 3rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/hero_bg.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(0.25) saturate(0.9) sepia(0.3);
+}
+
+#hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(24,17,10,0.97) 0%, rgba(24,17,10,0.4) 60%, transparent 100%);
+}
+
+#hero .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+}
+
+#hero .hero-eyebrow {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+#hero h1 {
+  color: #fff;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+#hero h1 span { color: var(--gold); }
+
+#hero .hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(237,232,216,0.7);
+  max-width: 55ch;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.cta-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+.btn-primary {
+  background: var(--gold);
+  color: #100c04;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  border: 2px solid var(--gold);
+  display: inline-block;
+  transition: background 0.15s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--orange); border-color: var(--orange); }
+
+.btn-outline {
+  border: 2px solid rgba(237,232,216,0.5);
+  color: var(--cream);
+  font-family: 'Special Elite', cursive;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+}
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   WHO THEY WERE — 2-col asymmetric
+   ============================================ */
+#who {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3.5rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+#who .who-text h2 { margin-bottom: 1rem; }
+#who .who-text p  { margin-bottom: 1rem; }
+
+#who .who-image {
+  position: relative;
+  border: 4px solid var(--gold);
+  transform: rotate(0.8deg);
+  flex-shrink: 0;
+}
+
+#who .who-image img {
+  width: 100%;
+  display: block;
+  filter: sepia(0.4) contrast(1.1);
+  transition: filter 0.3s;
+}
+#who .who-image:hover img { filter: sepia(0.1) contrast(1.15); }
+
+#who .who-image .img-caption {
+  background: #100c04;
+  border-top: 2px solid var(--gold);
+  padding: 0.6rem 0.8rem;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* fact strip — replaces identical stat card grid */
+.fact-strip {
+  display: flex;
+  gap: 0;
+  margin-top: 2rem;
+  border: 3px solid var(--gold);
+}
+
+.fact-item {
+  flex: 1;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  border-right: 2px solid var(--gold);
+}
+.fact-item:last-child { border-right: none; }
+.fact-item .fn { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--gold); display: block; }
+.fact-item .fl { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--muted); display: block; margin-top: 0.2rem; }
+
+/* ============================================
+   GOALS — newspaper columns, not card grid
+   ============================================ */
+#goals {
+  background: var(--surface);
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+  padding: 4rem 0;
+  max-width: 100%;
+}
+
+#goals .inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+#goals .goals-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+#goals .goals-intro h2 { margin-bottom: 0.6rem; }
+
+.primary-source-block {
+  background: rgba(58,46,136,0.12);
+  border: 2px solid var(--indigo);
+  border-left: 7px solid var(--indigo);
+  padding: 1.4rem 1.6rem;
+  margin: 2rem 0;
+}
+.primary-source-block .ps-tag {
+  display: inline-block;
+  background: var(--indigo);
+  color: #fff;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 0.7rem;
+}
+.primary-source-block blockquote {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+}
+.primary-source-block .ps-attribution {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* goals items — varied layout, not uniform grid */
+.goals-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 3px solid var(--gold); }
+
+.goal-item {
+  padding: 1.4rem;
+  border-right: 2px solid rgba(232,200,64,0.3);
+  border-bottom: 2px solid rgba(232,200,64,0.3);
+  position: relative;
+}
+.goal-item:nth-child(3n) { border-right: none; }
+.goal-item:nth-last-child(-n+3) { border-bottom: none; }
+
+.goal-item h3 { font-size: 1rem; color: var(--cream); margin-bottom: 0.5rem; }
+.goal-item h3::before { content: '— '; color: var(--gold); }
+.goal-item p { font-size: 0.85rem; margin: 0; }
+
+/* odd items get a slight background tint for visual variety */
+.goal-item:nth-child(odd) { background: rgba(232,200,64,0.03); }
+
+/* ============================================
+   LEADERS — profile list, not identical cards
+   ============================================ */
+.leaders-list { display: flex; flex-direction: column; gap: 0; border: 3px solid var(--gold); }
+
+.leader-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border-bottom: 2px solid rgba(232,200,64,0.3);
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.leader-row:last-child { border-bottom: none; }
+.leader-row:hover { background: rgba(232,200,64,0.05); }
+
+.leader-tag {
+  padding: 1.4rem;
+  border-right: 2px solid rgba(232,200,64,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.leader-tag h3 { font-size: 1.05rem; color: var(--cream); margin-bottom: 0.2rem; }
+.leader-tag .role { font-family: 'Special Elite', cursive; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); }
+
+.leader-bio { padding: 1.4rem; }
+.leader-bio p  { font-size: 0.88rem; margin: 0; }
+.leader-bio .ldr-quote {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.85rem;
+  color: rgba(237,232,216,0.6);
+  font-style: italic;
+  margin-top: 0.5rem;
+  border-left: 3px solid var(--gold);
+  padding-left: 0.7rem;
+}
+
+/* ============================================
+   TIMELINE — more handmade, less perfect
+   ============================================ */
+.timeline { position: relative; padding-left: 2.5rem; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--gold);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 2.5rem 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 5px;
+  width: 12px; height: 12px;
+  background: var(--bg);
+  border: 3px solid var(--gold);
+  transform: rotate(45deg);
+}
+
+.tl-year {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+
+.event-card {
+  background: var(--surface);
+  border: 2px solid rgba(232,200,64,0.35);
+  border-left: 5px solid var(--gold);
+  padding: 1.2rem 1.4rem;
+  transition: border-color 0.15s;
+}
+.event-card:hover { border-color: var(--orange); border-left-color: var(--orange); }
+.event-card h3 { font-size: 1.1rem; color: var(--cream); margin-bottom: 0.4rem; }
+.event-card p  { font-size: 0.88rem; margin: 0; }
+
+.event-img {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  max-height: 280px;
+  filter: sepia(0.3);
+  transition: filter 0.3s;
+}
+.event-card:hover .event-img { filter: sepia(0.1); }
+
+/* ============================================
+   LEGACY — simple numbered list style
+   ============================================ */
+#legacy {
+  background: var(--surface);
+  border-top: 4px solid var(--magenta);
+  border-bottom: 4px solid var(--magenta);
+  padding: 4rem 0;
+  max-width: 100%;
+}
+#legacy .inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+#legacy h2 { margin-bottom: 0.5rem; }
+#legacy > .inner > p { margin-bottom: 2rem; }
+
+.legacy-list { display: flex; flex-direction: column; gap: 0; border: 3px solid var(--magenta); }
+
+.legacy-row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  border-bottom: 1px solid rgba(162,52,116,0.35);
+  transition: background 0.15s;
+}
+.legacy-row:last-child { border-bottom: none; }
+.legacy-row:hover { background: rgba(162,52,116,0.06); }
+
+.legacy-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid rgba(162,52,116,0.4);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--magenta);
+  padding: 1.2rem 0.5rem;
+}
+
+.legacy-content { padding: 1.2rem 1.4rem; }
+.legacy-content h3 { font-size: 1rem; color: var(--cream); margin-bottom: 0.3rem; }
+.legacy-content p  { font-size: 0.85rem; margin: 0; }
+
+/* ============================================
+   GAME SECTION
+   ============================================ */
+#game {
+  padding: 4rem 2rem 5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#game h2 { margin-bottom: 0.5rem; }
+#game > p { margin: 0 auto 2rem; max-width: 55ch; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: #100c04;
+  border-top: 3px solid var(--gold);
+  padding: 2rem;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+footer .footer-left { }
+footer .footer-left p { font-size: 0.8rem; color: var(--muted); margin: 0; }
+footer .footer-left p + p { margin-top: 0.3rem; }
+
+footer .footer-right {
+  text-align: right;
+  font-family: 'Special Elite', cursive;
+  font-size: 2.5rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* ============================================
+   SECTION SPACING (plain sections)
+   ============================================ */
+section { padding: 4.5rem 2rem; max-width: 1100px; margin: 0 auto; }
+.full-bleed { max-width: 100%; padding: 0; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  #who { grid-template-columns: 1fr; }
+  #navbar nav { display: none; }
+  .fact-strip { flex-wrap: wrap; }
+  .fact-item { flex: 1 1 50%; }
+  #goals .goals-intro { grid-template-columns: 1fr; }
+  .goals-list { grid-template-columns: 1fr; }
+  .goal-item { border-right: none !important; }
+  .leader-row { grid-template-columns: 1fr; }
+  .leader-tag { border-right: none; border-bottom: 2px solid rgba(232,200,64,0.3); }
+  footer { grid-template-columns: 1fr; }
+  footer .footer-right { text-align: left; }
+}
+
+/* ============================================
+   MISSING CLASS DEFINITIONS
+   ============================================ */
+
+/* Section header block */
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.section-header h2 { margin-bottom: 0.5rem; }
+.section-header p  { max-width: 55ch; margin: 0 auto; }
+
+/* Section label (stamp-style tag used in events/game headers) */
+.section-label {
+  display: inline-block;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+/* Gradient text accent */
+.gradient-text {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Timeline year label */
+.year {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+  font-weight: 400;
+}
+
+/* CSS custom property aliases for game.css compatibility */
+:root {
+  --clr-gold: var(--gold);
+  --clr-orange: var(--orange);
+}
